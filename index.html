@@ -3,8 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Log In Page || School of Friendship </title>
-</head>
-<body>
 <style>
 body {
     margin: 0;
@@ -56,10 +54,16 @@ body {
     font-weight: bold;
 }
 
-.content {
-    margin-left: 230px;
-    padding: 20px;
-    width: 100%;
+.content{
+    position:relative;
+    z-index:1;
+
+    width:100%;
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
 .active {
@@ -77,13 +81,10 @@ body {
 }
 
 .slide{
-    float: left;
-    margin-right: 0px;
-    width: 950px;
-    height: 870px;
-    border-radius: 15px;
+    width:100vw;
+    height:100vh;
+    object-fit:cover;
 }
-
 .dot {
   height: 15px;
   width: 15px;
@@ -105,45 +106,56 @@ body {
   min-height: 100vh;       /* Full viewport height */
 }
 
-form {
-  width: 100%;
-  max-width: 400px; /* Ensures it doesn't get too wide on desktop */
-  padding: 5px;
+form{
+    width:500px;
+
+    background:rgba(255,255,255,0.75);
+    padding:40px;
+    border-radius:20px;
+    backdrop-filter:blur(8px);
+    text-align: center;
 }
 
-form {
-  width: 500px;
-  margin-left: 95%;
-  margin-right: auto;
+.slideshow-container{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    z-index:0;
 }
 
+.mySlides{
+    width:100%;
+    height:100%;
+}
 
 </style>
 </head>
+<body>
 <br>
 
 <div class="row"><br>
 
-        <div class="slideshow-container column">
+      <div class="slideshow-container">
 
-            <div class="mySlides fade">
-            <img src="img1.jpg" class="slide">
-            </div>
+    <div class="mySlides fade">
+        <img src="img1.jpg" class="slide">
+    </div>
 
-            <div class="mySlides fade">
-            <img src="img2.jpg" class="slide">
-            </div>
+    <div class="mySlides fade">
+        <img src="img2.jpg" class="slide">
+    </div>
 
-            <div class="mySlides fade">
-            <img src="img3.jpg" class="slide">
-            </div>
-            
-        <div>
+    <div class="mySlides fade">
+        <img src="img3.jpg" class="slide">
+    </div>
 
-<div style="text-align:center">
-  <span class="dot"></span> 
-  <span class="dot"></span> 
-  <span class="dot"></span> 
+</div>
+<span class="dot"></span> 
+<span class="dot"></span> 
+<span class="dot"></span> 
 
             <script>
                 let slideIndex = 0;
@@ -165,20 +177,11 @@ form {
                 dots[slideIndex-1].className += " active";
                 setTimeout(showSlides, 5000);
                 }
-            </script>
+</script>
             
 </div>
 <main class="content">
     <form action="dashboard.html" onsubmit="saveData(); return false;">
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
     <div class="logo">✨</div>
     <div class="registration-card">
     <div class="left-panel">
@@ -186,12 +189,6 @@ form {
         </div>
     </div>
     <div class="right-panel">
-        <br>
-        <br>
-        <br>
-        <br>
-        
-
                 <label>Username</label>
                 <br>
                 <input type="text"  class="form-control" style="border: 2px solid #a351c9; padding: 5px; border-radius: 4px; width: 400px;" id="inputFieldname" required>
