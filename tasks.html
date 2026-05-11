@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Tasks || School of Friendship</title>
-</head>
-<body>
 
-<style>
+    <style>
 body {
     margin: 0;
     font-family: 'Quicksand', Georgia, serif;
@@ -65,6 +63,7 @@ body {
 .content {
     margin-left: 230px;
     padding: 20px;
+    padding-bottom: 10%;
     width: 100%;
 }
 
@@ -167,6 +166,7 @@ button.complete-btn:hover {
     bottom: 0;
     left: 230px;
     right: 0;
+    z-index: 10;
     background: rgba(255,229,254,0.9);
     padding: 15px;
     border-top: 3px solid #a351c9;
@@ -190,6 +190,7 @@ button.complete-btn:hover {
     background:rgba(0,0,0,0.6);
     justify-content:center;
     align-items:center;
+    z-index: 1000;
 }
 
 .alert-content{
@@ -200,6 +201,8 @@ button.complete-btn:hover {
     text-align:center;
 }
 </style>
+</head>
+<body>
 
 <nav class="sidebar">
     <div class="logo">✨</div>
@@ -223,6 +226,8 @@ button.complete-btn:hover {
     <div class="card-grid" id="grid"></div>
 </div>
 
+
+
 <div class="footer-friendship" onclick="undoTask()">
     <b>Friendship Level ✨ (click to undo last)</b>
     <div class="progress-bar" style="height:20px;margin-top:10px;">
@@ -233,13 +238,43 @@ button.complete-btn:hover {
 
 <script>
 const tasks = [
-{title:"Practical Friendship Lessons",bio:"Sharing, kindness & teamwork!",img:"https://i.pinimg.com/736x/7f/76/4a/7f764aefbff2842768a6e9874af7f6dd.jpg",task:"Make a friendship bracelet ✨",points:11},
-{title:"Magical Artifacts",bio:"Discover sparkling treasures!",img:"https://i.pinimg.com/736x/ff/29/59/ff2959628d95050620d2ad9a6f8a92ce.jpg",task:"Find Elements of Friendship 💎",points:11},
-{title:"History",bio:"Stories of ponies",img:"https://i.pinimg.com/736x/cf/c7/55/cfc755a18152233baa04ea4284dc7d7b.jpg",task:"Draw royal pony 👑",points:11},
-{title:"Animal Care",bio:"Care for creatures",img:"https://i.pinimg.com/736x/51/50/be/5150be233c690ceea826ea62c72b242f.jpg",task:"Feed bunnies 🐰🐉",points:11},
-{title:"European Languages",bio:"Fancy pony words",img:"https://i.pinimg.com/originals/20/01/39/20013902bb36bdf89ff4f670d68e160c.gif",task:"Say hello 💕",points:11},
-{title:"Potions",bio:"Mix magic",img:"https://i.pinimg.com/736x/fc/7e/00/fc7e00072bf7d416be078dd04086faa1.jpg",task:"Glitter potion 🌈",points:11},
-{title:"Astronomy",bio:"Stars & skies",img:"https://i.pinimg.com/736x/ec/b5/66/ecb5660908fd9b7fffeebea27b89a3c5.jpg",task:"Constellation ⭐",points:11},
+
+{title:"Practical Friendship Lessons",
+bio:"Sharing, kindness & teamwork!",
+img:"https://i.pinimg.com/736x/7f/76/4a/7f764aefbff2842768a6e9874af7f6dd.jpg",
+task:"Make a friendship bracelet ✨",
+points:11},
+
+{title:"Magical Artifacts",
+bio:"Discover sparkling treasures!",
+img:"https://i.pinimg.com/736x/ff/29/59/ff2959628d95050620d2ad9a6f8a92ce.jpg",
+task:"Find Elements of Harmony 💎",
+points:11},
+{title:"History",
+bio:"Stories of ponies",
+img:"https://i.pinimg.com/736x/cf/c7/55/cfc755a18152233baa04ea4284dc7d7b.jpg",
+task:"Draw royal pony 👑",
+points:11},
+{title:"Animal Care",
+bio:"Care for creatures",
+img:"https://i.pinimg.com/736x/51/50/be/5150be233c690ceea826ea62c72b242f.jpg",
+task:"Feed bunnies 🐰🐉",
+points:11},
+{title:"European Languages",
+bio:"Fancy pony words",
+img:"https://i.pinimg.com/originals/20/01/39/20013902bb36bdf89ff4f670d68e160c.gif",
+task:"Say hello 💕",
+points:11},
+{title:"Potions",
+bio:"Mix magic",
+img:"https://i.pinimg.com/736x/fc/7e/00/fc7e00072bf7d416be078dd04086faa1.jpg",
+task:"Glitter potion 🌈",
+points:11},
+{title:"Astronomy",
+bio:"Stars & skies",
+img:"https://i.pinimg.com/736x/ec/b5/66/ecb5660908fd9b7fffeebea27b89a3c5.jpg",
+task:"Constellation ⭐",
+points:11},
 {title:"Alchemy",bio:"Turn things to magic",img:"https://i.pinimg.com/736x/17/ab/74/17ab7401d6fc71b8f45c3c8fd41aaaa2.jpg",task:"Make slime ✨",points:11},
 {title:"Music",bio:"Dance & sing",img:"https://i.pinimg.com/736x/af/55/d8/af55d898b09c3f5a14af8cfcdf2b9dbf.jpg",task:"Pony dance 🎶🦄",points:12}
 ];
@@ -249,28 +284,30 @@ let history=[];
 const max=100;
 
 function render(){
-let g=document.getElementById("grid");
-g.innerHTML="";
-tasks.forEach((t,i)=>{
-  g.innerHTML+=`
-  <div class='card' style='--i:${i}'>
-    <div class='title'>${t.title}</div>
-    <div class='task'>${t.bio}</div>
-    <img src='${t.img}'>
-    <div class='task'>${t.task}</div>
+let grid=document.getElementById("grid");
+grid.innerHTML="";
+tasks.forEach((task_object,index)=>{
+  grid.innerHTML+=`
+  <div class='card' style='--i:${index}'>
+    <div class='title'>${task_object.title}</div>
+    <div class='task'>${task_object.bio}</div>
+    <img src='${task_object.img}'>
+    <div class='task'>${task_object.task}</div>
     <div class='progress-bar'><div class='progress' style='width:0%'></div></div>
-    <button class='complete-btn' onclick='completeTask(${i},this)'>Click when complete</button>
+    <button class='complete-btn' onclick='completeTask(${index},this)'>Click when complete</button>
   </div>`;
 });
 }
 
-function completeTask(i,btn){
+function completeTask(index,btn){
 if(btn.disabled)return;
 btn.disabled=true;
 btn.innerText="Completed ✔";
-friendship+=tasks[i].points;
+let progressBar=btn.closest('.card').querySelector('.progress');
+progressBar.style.width='100%';
+friendship+=tasks[index].points;
 if(friendship>max)friendship=max;
-history.push({btn,points:tasks[i].points});
+history.push({btn,points:tasks[index].points});
 update();
 }
 
@@ -297,7 +334,7 @@ window.location.href="index.html";
 }
 
 document.getElementById("showAlert").onclick=function(){
-    document.getElementById("customAlert").style.display="flex";
+document.getElementById("customAlert").style.display="flex";
 };
 
 render();update();
@@ -305,4 +342,3 @@ render();update();
 
 </body>
 </html>
-
