@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Log In Page || School of Friendship </title>
+</head>
+<body>
+<style>
+body {
+    margin: 0;
+    font-family: Georgia, serif;
+    display: flex;
+    overflow: hidden;
+}
+
+.sidebar {
+    width: 230px;
+    height: 100vh;
+    background: #560883;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    position: fixed;
+}
+
+.logo {
+    color: white;
+    text-align: left;
+    font-size: 30px;
+    margin-bottom: 30px;
+}
+
+.nav-item {
+    color: #ffe5fe;
+    text-decoration: none;
+    padding: 15px 25px;
+    display: block;
+    transition: 0.3s;
+}
+
+.nav-item:hover {
+    background: #431558;
+    color: white;
+    
+}
+
+.button1 {
+    background: #a351c9;
+    color: white;
+}
+
+
+.nav-item.active {
+    background:  #a351c9;
+    border-left: 4px solid #98228a;
+    font-weight: bold;
+}
+
+.content {
+    margin-left: 230px;
+    padding: 20px;
+    width: 100%;
+}
+
+.active {
+  background-color: #717171;
+}
+
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+.slide{
+    float: left;
+    margin-right: 0px;
+    width: 950px;
+    height: 870px;
+    border-radius: 15px;
+}
+
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: none;
+  transition: background-color 0.6s ease;
+}
+
+.active {
+  background-color: #717171;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center; /* Horizontal centering */
+  align-items: center;     /* Vertical centering */
+  min-height: 100vh;       /* Full viewport height */
+}
+
+form {
+  width: 100%;
+  max-width: 400px; /* Ensures it doesn't get too wide on desktop */
+  padding: 5px;
+}
+
+form {
+  width: 500px;
+  margin-left: 95%;
+  margin-right: auto;
+}
+
+
+</style>
+</head>
+<br>
+
+<div class="row"><br>
+
+        <div class="slideshow-container column">
+
+            <div class="mySlides fade">
+            <img src="img1.jpg" class="slide">
+            </div>
+
+            <div class="mySlides fade">
+            <img src="img2.jpg" class="slide">
+            </div>
+
+            <div class="mySlides fade">
+            <img src="img3.jpg" class="slide">
+            </div>
+            
+        <div>
+
+<div style="text-align:center">
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+
+            <script>
+                let slideIndex = 0;
+                showSlides();
+
+                function showSlides() {
+                let i;
+                let slides = document.getElementsByClassName("mySlides");
+                let dots = document.getElementsByClassName("dot");
+                for (i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";  
+                }
+                slideIndex++;
+                if (slideIndex > slides.length) {slideIndex = 1}    
+                for (i = 0; i < dots.length; i++) {
+                    dots[i].className = dots[i].className.replace(" active", "");
+                }
+                slides[slideIndex-1].style.display = "block";  
+                dots[slideIndex-1].className += " active";
+                setTimeout(showSlides, 5000);
+                }
+            </script>
+            
+</div>
+<main class="content">
+    <form action="dashboard.html" onsubmit="saveData(); return false;">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="logo">✨</div>
+    <div class="registration-card">
+    <div class="left-panel">
+        <div class="profile-placeholder">
+        </div>
+    </div>
+    <div class="right-panel">
+        <br>
+        <br>
+        <br>
+        <br>
+        
+
+                <label>Username</label>
+                <br>
+                <input type="text"  class="form-control" style="border: 2px solid #a351c9; padding: 5px; border-radius: 4px; width: 400px;" id="inputFieldname" required>
+            </div>
+            <br>
+            <div class="mt-3">
+                <label>Password</label>
+                <br>
+                <input type="password" class="form-control" style="border: 2px solid #a351c9; padding: 5px; border-radius: 4px; width: 400px;" id="inputFieldpass" required>
+            <br>
+            <br>
+                <label>Contact Number</label>
+            <br>
+                <input type="number" class="form-control" style="border: 2px solid #a351c9; padding: 5px; border-radius: 4px; width: 400px;" id="inputFieldconnumber" required>
+            <br>
+            <br>
+
+                <label>Email</label>
+            <br>
+                <input type="email" class="form-control" style="border: 2px solid #a351c9; padding: 5px; border-radius: 4px; width: 400px;" id="inputFieldemail" required>
+                <br>
+                <br>
+            
+    </div>
+                <div class="form-check mt-4">
+                <input class="form-check-input" type="checkbox" required>
+                <label class="form-check-label">
+                    I accept the Terms of Use and Privacy Policy
+                </label>
+                <br>
+                <br>
+            <button type="button" onclick="saveData()" class="submit-btn" style="border: 2px solid #a351c9; padding: 5px; border-radius: 4px; width: 400px; background-color: #a351c9;"><a href="dashboard.html" style="color: #ffe5fe; text-decoration: none ;">Log in</a></button>
+                </div>
+    </form>
+
+<script>
+    function saveData() {
+    const name = document.getElementById('inputFieldname').value;
+    const pass = document.getElementById('inputFieldpass').value;
+    const phone = document.getElementById('inputFieldconnumber').value;
+    const email = document.getElementById('inputFieldemail').value;
+
+    localStorage.setItem('sharedText1', name);
+    localStorage.setItem('sharedText2', pass);
+    localStorage.setItem('sharedText3', phone);
+    localStorage.setItem('sharedText4', email);
+
+    window.location.href = 'dashboard.html'; 
+}
+</script>
+
+        </div>
+        </div>
+
+    </div>
+
+
+</div>
+</div>
+</div>
+</div>
+</main>
+
+</section>
+<br><br><br>
+
+</body>
+</html>

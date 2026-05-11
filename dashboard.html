@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard || School of Friendship </title>
+</head>
+<body>
+<style>
+body {
+    margin: 0;
+    font-family: Georgia, serif;
+    display: flex;
+}
+
+.sidebar {
+    width: 230px;
+    height: 100vh;
+    background: #560883;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    position: fixed;
+}
+
+.logo {
+    color: white;
+    text-align: left;
+    font-size: 30px;
+    margin-bottom: 30px;
+}
+
+.nav-item {
+    color: #ffe5fe;
+    text-decoration: none;
+    padding: 15px 25px;
+    display: block;
+    transition: 0.3s;
+}
+
+.nav-item:hover {
+    background: #a351c9;
+    color: white;
+}
+
+.nav-item.active {
+    background:  #a351c9;
+    border-left: 4px solid #98228a;
+    font-weight: bold;
+}
+
+.navbutton {
+    height: 100%;
+    display: flex;
+    align-items: center; 
+    padding: 0px;
+    background-color: #560883;
+    color: #ffe5fe;
+    text-decoration: none;
+    border: none;
+    font-family: Georgia, serif;
+}
+
+.navbutton:hover {
+    height: 100%; 
+    display: flex;
+    align-items: center; 
+    padding: 0px;
+    background-color: #a351c9;
+    color: #ffe5fe;
+    text-decoration: none;
+    border: none;
+    font-family: Georgia, serif;
+}
+
+.navbutton:focus {
+    height: 100%; 
+    display: flex;
+    align-items: center; 
+    padding: 0px;
+    background-color: #a351c9;
+    color: #ffe5fe;
+    text-decoration: none;
+    border: none;
+    font-family: Georgia, serif;
+    font-weight: bold;
+}
+
+.content {
+    margin-left: 230px;
+    padding: 20px;
+    width: 100%;
+}
+
+.alert-box{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+}
+
+.alert-content{
+    background-color:#ffe5fe;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.alert-content h2{
+    font-size: 22px;
+    margin-bottom: 10px;
+    color:#333;
+}
+
+.alert-content p{
+    font-size: 16px;
+    margin-bottom: 20px;
+    color:#666;
+}
+
+.alert-content button{
+    padding: 10px 20px;
+    background-color: #a351c9;
+    color: #ffe5fe;
+    border: none;
+    cursor: pointer;
+    border-radius: 10%;
+}
+
+.alert-content a{
+    padding: 10px 20px;
+    color:#ffe5fe; 
+    border-radius: 10%;
+}
+
+#displayArea {
+        color: #000000;
+        font-weight: bold;
+        font-size: 24px;    
+    }
+
+</style>
+
+    <nav class="sidebar">
+        <div class="logo">✨</div>
+
+        <a href="dashboard.html" class="nav-item active">Dashboard</a>
+        <a href="vns.html" class="nav-item">Virtual Notebooks</a>
+        <a href="tasks.html" class="nav-item">Tasks</a>
+        <a href="profile.html" class="nav-item">Profile</a>
+        <a href="#" class="nav-item"><button class="navbutton" id="showAlert" onclick="('This is a navbar alert!')"><h3>Logout</h3></button></a>
+    </nav>
+
+<div id="customAlert" class="alert-box">
+    <div class="alert-content">
+        <h2>Are you SURE you want to log out?</h2>
+        <p>(this cannot be undone)</p>
+        <button id="confirmBtn" class="confirmBtn"><a href="index.html"> im sure </a></button>
+    </div>
+
+</div>
+
+<script>
+    const links = document.querySelectorAll(".nav-item");
+
+    links.forEach(link => {
+        link.addEventListener("click", () => {
+            links.forEach(l => l.classList.remove("active"));
+            link.classList.add("active");
+        });
+    });
+
+    const showAlertBtn = document.getElementById('showAlert');
+    const customAlert = document.getElementById('customAlert');
+    const confirmBtn = document.getElementById('confirmBtn');
+
+    showAlertBtn.addEventListener('click', function(){
+    customAlert.style.display ='flex';
+    });
+
+    confirmbtn.addEventListener('click', function(){
+        customAlert.style.display = 'none';
+
+    });
+
+    function logout() {
+        localStorage.clear(); 
+        window.location.href = 'index.html'; 
+    }
+
+</script>
+
+
+</body>
+</section>
+<br><br><br>
+
+ <div class="footer">
+       
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+</html>
