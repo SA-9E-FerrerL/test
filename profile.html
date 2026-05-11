@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Profile || School of Friendship </title>
-</head>
-<body>
-<style>
+    <style>
 body {
     margin: 0;
     font-family: Georgia, serif;
@@ -146,6 +146,8 @@ body {
     }
 
 </style>
+</head>
+<body>
 
     <nav class="sidebar">
         <div class="logo">✨</div>
@@ -165,9 +167,73 @@ body {
     </div>
 
 </div>
+    
+   <main class="content
+    text-center 
+    justify-content-center 
+    d-flex
+    align-items-center">
+
+    <div class="card mb-3 mx-auto" style="max-width: 540px; border-radius: 10%; padding: 10%;">
+        <div class="card-body text-center">
+            <h1 class="card-title" style="color: #560883;">Profile</h1>
+            <div class="left-panel mb-4">
+                <img id="profileImagePreview" src="https://avatarfiles.alphacoders.com/303/thumb-1920-303678.gif"
+                    style="width: 180px; height: 180px; border-radius: 50%; object-fit: cover; border: 3px solid #a351c9; box-shadow: 0 6px 18px rgba(0,0,0,0.15); margin-bottom: 15px;"
+                    alt="Profile image">
+                <br>
+                <button type="button" id="chooseFileBtn" class="btn btn-primary" style="background-color: #a351c9; border-color: #a351c9;">Choose File</button>
+                <input type="file" id="profileImageInput" accept="image/*" class="d-none">
+            </div> 
+            <p>You may upload a new profile image at any time!</p>
+            <h1>Student Information</h1>
+        <br>
+        <p><span id="displayArea1"></span></p>
+        <br>
+        <h3>Student ID</h3>
+        <div id="randomNumber">0</div>
+
+    
+        <br>
+        <h3>Password</h3>
+        <p><span id="displayArea2"></span></p>
+        <br>
+        <h3>Contact Number</h3>
+        <p><span id="displayArea3"></span></p>
+        <br>
+        <h3>Email Address</h3>
+        <p><span id="displayArea4"></span></p>
+        <br>
+        <h3>Pony Type</h3>
+        <p>Unicorn</p>
+    </div>
+</div>
+    </main>
+
 
 <script>
-    const links = document.querySelectorAll(".nav-item");
+
+    const chooseFileBtn = document.getElementById('chooseFileBtn');
+    const profileImageInput = document.getElementById('profileImageInput');
+    const profileImagePreview = document.getElementById('profileImagePreview');
+
+    if (chooseFileBtn && profileImageInput && profileImagePreview) {
+        chooseFileBtn.addEventListener('click', function() {
+            profileImageInput.click();
+        });
+
+        profileImageInput.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                profileImagePreview.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        });
+    }
+
+       const links = document.querySelectorAll(".nav-item");
 
     links.forEach(link => {
         link.addEventListener("click", () => {
@@ -189,44 +255,6 @@ body {
 
     });
 
-</script>
-
-
-
-    <main class="content">
-        <h1 style="left: 10px;">Profile</h1>
-    <div class="registration-card">
-    <div class="left-panel">
-        <div class="profile-placeholder">
-            Profile Image
-        </div>
-        <input type="file" class="form-control mt-2">
-    </div>
-
-
-        <h1>Student Information</h1>
-        <br>
-        <p><span id="displayArea1"></span></p>
-        <br>
-        <h3>Student ID</h3>
-        <div id="randomNumber">0</div>
-
-    
-        <br>
-        <h3>Password</h3>
-        <p><span id="displayArea2"></span></p>
-        <br>
-        <h3>Contact Number</h3>
-        <p><span id="displayArea3"></span></p>
-        <br>
-        <h3>Email Address</h3>
-        <p><span id="displayArea4"></span></p>
-        <br>
-        <h3>Pony Type</h3>
-        <p>Unicorn</p>
-
-
-<script>
     function displayData() {
         const name = localStorage.getItem('sharedText1');
         const pass = localStorage.getItem('sharedText2');
@@ -257,14 +285,9 @@ body {
         generateRandom();
     };
 </script>
-
-</body>
 </section>
 <br><br><br>
 
- <div class="footer">
-       
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<div class="footer"></div>
 </body>
-</html>
 </html>
